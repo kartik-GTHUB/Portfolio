@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kartik Bhanusghare | Java Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --bg-card: #1e293b;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --font-mono: 'Fira Code', monospace;
+      --font-sans: 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+    }
+
+    /* Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1.5rem;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.5px;
+      color: var(--text-main);
+    }
+
+    /* Profile Picture in Upper Left Corner */
+    .nav-profile-img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      list-style: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .btn-resume {
+      border: 1px solid var(--accent);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      color: var(--accent) !important;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+    }
+
+    .btn-resume:hover {
+      background: rgba(56, 189, 248, 0.1);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 8rem 1.5rem 4rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: #4ade80;
+      background: rgba(74, 222, 128, 0.1);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+      font-family: var(--font-mono);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #4ade80;
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      line-height: 1.1;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: var(--bg-dark);
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+      color: var(--bg-dark);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.2rem;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+    }
+
+    /* Terminal Window Card */
+    .terminal-card {
+      background: #090d16;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+
+    .terminal-header {
+      background: var(--bg-card);
+      padding: 0.6rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .terminal-btn {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .btn-red { background: #ef4444; }
+    .btn-yellow { background: #f59e0b; }
+    .btn-green { background: #10b981; }
+
+    .terminal-title {
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      margin-left: auto;
+    }
+
+    .terminal-body {
+      padding: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      line-height: 1.8;
+      color: var(--text-main);
+    }
+
+    .keyword { color: #f472b6; }
+    .type { color: #38bdf8; }
+    .string { color: #a3e635; }
+
+    /* Tech Strip */
+    .tech-strip {
+      border-y: 1px solid var(--border);
+      background: var(--bg-card);
+      padding: 1rem 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-around;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    /* Content Sections */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      color: var(--accent);
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 8px;
+    }
+
+    .skill-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+      color: var(--accent);
+    }
+
+    .skill-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Project Cards */
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .project-tech {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+    }
+
+    .tech-tag {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .project-bullets {
+      color: var(--text-muted);
+      margin-left: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    .project-bullets li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Contact & Footer */
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 3rem 2rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero, .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header>
+    <nav>
+      <a href="#" class="nav-brand">
+        <!-- Profile Picture placed right before Kartik.java -->
+        <img src="C:\Users\Kartik7015\OneDrive\Documents\Kartik Arun Bhanusghare_page-0001.jpg" alt="Kartik Bhanusghare" class="nav-profile-img">
+        <span>Kartik Bhanusghare</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="Kartik_Bhanusghare_Resume_v2.pdf" class="btn-resume" target="_blank" rel="noopener noreferrer">Resume ↗</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div>
+        <div class="status-badge">
+          <span class="status-dot"></span> Available for Opportunities
+        </div>
+        <h1>Building software<br><span>with structure.</span></h1>
+        <p>
+          I'm <strong>Kartik Bhanusghare</strong>, a Computer Engineering student focused on Core Java, Object-Oriented Programming, and web technologies.
+        </p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn-primary">View My Work ↓</a>
+          <a href="mailto:kartikbhanusghare2004@gmail.com">Let's Connect ↗</a>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/kartik-GTHUB" target="_blank">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/kartik-bhanusghare-23191b358" target="_blank">LinkedIn ↗</a>
+        </div>
+      </div>
+
+      <!-- TERMINAL CARD -->
+      <div class="terminal-card">
+        <div class="terminal-header">
+          <span class="terminal-btn btn-red"></span>
+          <span class="terminal-btn btn-yellow"></span>
+          <span class="terminal-btn btn-green"></span>
+          <span class="terminal-title">Kartik.java</span>
+        </div>
+        <div class="terminal-body">
+          <p><span class="keyword">public class</span> KartikBhanusghare {</p>
+          <p>&nbsp;&nbsp;<span class="type">String</span> role = <span class="string">"Java Developer"</span>;</p>
+          <p>&nbsp;&nbsp;<span class="type">String</span> education = <span class="string">"B.E. Computer Engineering"</span>;</p>
+          <p>&nbsp;&nbsp;<span class="type">String</span> location = <span class="string">"Pune, Maharashtra"</span>;</p>
+          <p>&nbsp;&nbsp;<span class="type">String[]</span> skills = {<span class="string">"Java"</span>, <span class="string">"OOP"</span>, <span class="string">"MySQL"</span>, <span class="string">"HTML/CSS/JS"</span>};</p>
+          <br>
+          <p>&nbsp;&nbsp;<span class="keyword">while</span> (learning) {</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;buildProjects();</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;solveProblems();</p>
+          <p>&nbsp;&nbsp;}</p>
+          <p>}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH STRIP -->
+    <div class="tech-strip">
+      <span>CORE JAVA</span> ✦ <span>OOP</span> ✦ <span>MYSQL</span> ✦ <span>HTML5 & CSS3</span> ✦ <span>JAVASCRIPT</span> ✦ <span>BOOTSTRAP</span>
+    </div>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+      <div class="section-label">01 — About</div>
+      <div class="grid-2">
+        <div>
+          <h2 class="section-title">Structured logic.<br><span style="color: var(--accent);">Clean code.</span></h2>
+        </div>
+        <div>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            I am a Computer Engineering undergraduate expected to graduate in 2027. My technical foundation is built around Core Java, Object-Oriented Software Principles, and Relational Database Systems like MySQL.
+          </p>
+          <p style="color: var(--text-muted);">
+            I enjoy transforming conceptual problems into efficient software logic, building object-oriented desktop applications, and creating responsive web interfaces using HTML, CSS, JavaScript, and Bootstrap.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+      <div class="section-label">02 — Toolbox</div>
+      <h2 class="section-title">Technologies & Fundamentals</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Programming Languages</h3>
+          <p>Core Java, JavaScript</p>
+        </div>
+        <div class="skill-card">
+          <h3>Core Concepts</h3>
+          <p>Object-Oriented Programming (OOP), Data Structures, Encapsulation, Polymorphism</p>
+        </div>
+        <div class="skill-card">
+          <h3>Database & Querying</h3>
+          <p>MySQL, Relational Database Management Systems (RDBMS), SQL Queries</p>
+        </div>
+        <div class="skill-card">
+          <h3>Web Development</h3>
+          <p>HTML5, CSS3, JavaScript (JS), Bootstrap Framework</p>
+        </div>
+        <div class="skill-card">
+          <h3>Developer Tools</h3>
+          <p>Git, GitHub, Eclipse, IntelliJ IDEA</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+      <div class="section-label">03 — Selected Work</div>
+      <h2 class="section-title">Featured Project</h2>
+      <div class="project-card">
+        <h3>Pizza Bill Generator Application</h3>
+        <div class="project-tech">
+          <span class="tech-tag">Core Java</span>
+          <span class="tech-tag">OOP Concepts</span>
+          <span class="tech-tag">CLI Logic</span>
+        </div>
+        <ul class="project-bullets">
+          <li>Designed and implemented a modular automated billing system leveraging Core Java object-oriented principles (Encapsulation, Inheritance, and Polymorphism).</li>
+          <li>Developed flexible pricing calculation workflows for base pizza options, dynamic custom toppings, extra cheese additions, and takeaway packaging fees.</li>
+          <li>Built dynamic input validation and console user interaction to calculate subtotals and generate dynamic itemized receipts.</li>
+        </ul>
+        <br>
+        <a href="https://github.com/kartik-GTHUB" target="_blank" style="font-family: var(--font-mono); font-size: 0.9rem;">View Repository on GitHub ↗</a>
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education">
+      <div class="section-label">04 — Education</div>
+      <div class="project-card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+        <div>
+          <h3 style="margin-bottom: 0.4rem;">Bachelor of Engineering (B.E.) in Computer Engineering</h3>
+          <p style="color: var(--text-muted);">Pune, Maharashtra, India</p>
+        </div>
+        <div style="font-family: var(--font-mono); color: var(--accent);">
+          Expected Graduation: 2027
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+      <div class="contact-card">
+        <div class="section-label">05 — Get In Touch</div>
+        <h2 style="font-size: 2.2rem; margin-bottom: 1rem;">Let's Build Something Together</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+          I am currently seeking software engineering internship and entry-level developer opportunities.
+        </p>
+        <a href="mailto:kartikbhanusghare2004@gmail.com" class="btn-primary" style="display: inline-block;">Say Hello ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Kartik Arun Bhanusghare · Built with HTML, CSS & JavaScript</p>
+  </footer>
+</body>
+</html>
